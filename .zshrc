@@ -14,6 +14,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+for file in ~/scripts/*; do
+  if [ -f "$file" ]; then
+    source "$file"
+  fi
+done
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -115,4 +121,6 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 eval "$(zoxide init zsh --cmd cd)"
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
